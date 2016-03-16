@@ -3,6 +3,7 @@
  */
 var socket = io.connect();
 socket.emit('iamhere', 'mariosky');
+
 socket.on('whoshere', function (data) {
     var ul = document.getElementById('events');
 

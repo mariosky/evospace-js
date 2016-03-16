@@ -6,7 +6,29 @@ var evospace = require('../lib/evospace');
 
 var router = express.Router();
 
+/* GET home page. */
 
+
+
+router.get('/', function(req, res, next) {
+    res.render('evodraw', { title: 'Express' });
+});
+
+
+
+
+
+router.get('/', function(req, res, next) {
+
+    var population =  new evospace.Population(req.space);
+
+    population.card( function(err, result)
+    {
+
+        res.send( { 'cardinality': result } );
+    });
+
+});
 
 
 
@@ -36,7 +58,7 @@ router.put('/:space/initialize', function(req, res, next) {
 });
 
 
-router.get('/:space/get_sample/:size', function(req, res, next) {
+router.get('/:space/sample/:size', function(req, res, next) {
 
     var population =  new evospace.Population(req.space);
 
@@ -49,5 +71,12 @@ router.get('/:space/get_sample/:size', function(req, res, next) {
 });
 
 
+router.put('/:space/sample/', function(req, res, next) {
+
+    var population =  new evospace.Population(req.space);
+
+    population.put_sample( req.sample);
+
+});
 
 module.exports = router;
