@@ -644,62 +644,15 @@ float[] chromosome = {34, 59, 0, 1, 0, 0, 3, 0, 0, 1, 1, 0, 0, 2, 3};
 float[] getChromosome() { return chromosome; }
 
 // Cambiar el tamaño de la pantalla del individuo
-float[] screenSize = {300,450};
+float[] screenSize = {1350,800};
 float[] getSize() { return screenSize; }
 
 
 void Fondo(){//---------------------------funcion para elegir el color de fondo--------------------------
-  
-  int y = 0, col=0;//int(random(0,256));
- 
-  
-  if(chromosome[14] == 0){
-    background(0);
-  }
-  else if(chromosome[14] == 1){
-    background(255,255,255);
-  }
-  
-  
-  else if(chromosome[14] == 2){
-  
-  
-  /*  for(int i = 0;i < height;i++){
-      noStroke();
-      fill(col,255,255,100);
-      rect(0,i,width,(height/5.0));
-      if((y % 9) == 0){
-        col++; 
-      }
-      y++;
-    }
-   */
-  color   c1 = color(255,255,100);
-  color c2 = color(0, 102, 153);
-  setGradient(0, 0, width, height, c1, c2, Y_AXIS);
- // setGradient(50, 190, 540, 80, c2, c1, X_AXIS);
-  
-  }
-  else if(chromosome[14] == 3){
-    
-    color   c1 = color(255,255,100);
-  color c2 = color(0, 102, 153);
-  setGradient(0, 0, width, height, c1, c2, X_AXIS);
- // setGradient(50, 190, 540, 80, c2, c1, X_AXIS);
-    
- /*   
-    col = int(random(0,256));
-    for(int i = 0;i < height;i++){
-      noStroke();
-      fill(col,255,255,100);
-      rect(0,i,width,(height/5.0));
-      if((y % 9) == 0){
-        col++; 
-      }
-      y++;
-    }
-  */
- }
+
+   background(0);
+
+
 }
 
 
@@ -894,10 +847,10 @@ void draw()
     }
   
  
-  if(frameCount == 100){
-//if(frameCount % 100 == 0){
-   //setup(); 
-    noLoop();
+  //if(frameCount == 1000){
+if(frameCount % 1000 == 0){
+    setup();
+   // noLoop();
 
   }
   

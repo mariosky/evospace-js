@@ -1,13 +1,19 @@
 //
    Created by mariosky on 3/16/16.
 
-extends layout
+
+doctype html
+html
+    head
+        title= title
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
+        link(rel='stylesheet', href='/stylesheets/evodraw.css')
 block content
-   .container
-      h1#tit= title
+   .container-full
       p Welcome to #{title}
       canvas#lienzo(data-processing-sources='/javascripts/drawings.pde')
       script(src="/javascripts/face-reader.js")
 block scripts
       script(src="/socket.io/socket.io.js")
       script(src="/javascripts/processing.min.js")
+

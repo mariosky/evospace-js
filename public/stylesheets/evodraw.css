@@ -1,0 +1,11 @@
+.container-full {
+    margin: 0 auto;
+    width: 100%;
+}
+
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: #000000;
+    color: #29a329;
+}
