@@ -10,7 +10,14 @@ block content
                a.navbar-brand EvoDraw
 
       p Welcome to #{title}
-      script(src="/javascripts/evodraw-config.js")
+      p
+         button.btn.btn-danger(type="button") Inicializar Población
+         button.btn.btn-default(type="button") Respawn
+
+      block scripts
+         script(src="/socket.io/socket.io.js")
+         script(src="/javascripts/evodraw-config.js")
+         script(src="/javascripts/evodraw-config.js")
 block scripts
    script(src="/socket.io/socket.io.js")
 
