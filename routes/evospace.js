@@ -45,7 +45,7 @@ router.get('/:space/cardinality', function(req, res, next) {
 
 });
 
-router.put('/:space/initialize', function(req, res, next) {
+router.get('/:space/initialize', function(req, res, next) {
 
     var population =  new evospace.Population(req.space);
 
