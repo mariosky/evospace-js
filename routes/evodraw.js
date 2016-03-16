@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     res.render('evodraw', { title: 'Express' });
 });
 
-router.get('/dashboard', function(req, res, next) {
+router.get('/dashboard/', function(req, res, next) {
     res.render('evodraw-dashboard', { title: 'Express' });
 });
 

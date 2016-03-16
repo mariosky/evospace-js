@@ -3,11 +3,15 @@
 
 extends layout
 block content
-   .jumbotron.masthead
-      .container
-         h1#tit= title
-         p Welcome to #{title}
-         ul#events
-         script(src="/javascripts/evodraw-config.js")
+   .container
+      nav.navbar.navbar-default
+         .container-fluid
+            .navbar-header
+               a.navbar-brand EvoDraw
+
+      p Welcome to #{title}
+      script(src="/javascripts/evodraw-config.js")
 block scripts
    script(src="/socket.io/socket.io.js")
+
+
