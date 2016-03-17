@@ -11,14 +11,6 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-    res.render('evodraw', { title: 'Express' });
-});
-
-
-
-
-
-router.get('/', function(req, res, next) {
 
     var population =  new evospace.Population(req.space);
 
@@ -45,7 +37,7 @@ router.get('/:space/cardinality', function(req, res, next) {
 
 });
 
-router.get('/:space/initialize', function(req, res, next) {
+router.post('/:space/initialize', function(req, res, next) {
 
     var population =  new evospace.Population(req.space);
 
@@ -57,6 +49,22 @@ router.get('/:space/initialize', function(req, res, next) {
 
 });
 
+router.post('/:space/individual', function(req, res, next) {
+
+    var population =  new evospace.Population(req.space);
+
+    console.log(req.body['chromosome[]']);
+
+    var individual = {chromosome: req.body['chromosome[]']};
+
+
+    population.put_individual(individual, function(err, result)
+    {
+
+        res.send( { 'result': result } );
+    });
+
+});
 
 router.get('/:space/sample/:size', function(req, res, next) {
 
@@ -71,7 +79,7 @@ router.get('/:space/sample/:size', function(req, res, next) {
 });
 
 
-router.put('/:space/sample/', function(req, res, next) {
+router.post('/:space/sample/', function(req, res, next) {
 
     var population =  new evospace.Population(req.space);
 

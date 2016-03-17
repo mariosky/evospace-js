@@ -11,13 +11,14 @@ block content
 
       p Welcome to #{title}
       p
-         button.btn.btn-danger(type="button") Inicializar Población
+         button#initialize.btn.btn-danger(type="button") Inicializar Población
          button.btn.btn-default(type="button") Respawn
 
       block scripts
          script(src="/socket.io/socket.io.js")
+         script(src="/javascripts/jquery.min.js")
          script(src="/javascripts/evodraw-config.js")
-         script(src="/javascripts/evodraw-config.js")
+
 block scripts
    script(src="/socket.io/socket.io.js")
 
