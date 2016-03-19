@@ -1,7 +1,7 @@
 /**
  * Created by mario on 3/12/16.
  */
-var express = require('express')
+var express = require('express');
 var evospace = require('../lib/evospace');
 
 var router = express.Router();
@@ -68,9 +68,9 @@ router.post('/:space/individual', function(req, res, next) {
 
 router.get('/:space/sample/:size', function(req, res, next) {
 
-    var population =  new evospace.Population(req.space);
+    var population =  new evospace.Population(req.params.space);
 
-    population.get_sample( req.size ,function(err, result)
+    population.get_sample( req.params.size ,function(err, result)
     {
 
         res.send( { 'result': result } );

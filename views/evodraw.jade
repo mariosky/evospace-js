@@ -12,8 +12,10 @@ block content
    .container-full
       p Welcome to #{title}
       canvas#lienzo(data-processing-sources='/javascripts/drawings.pde')
-      script(src="/javascripts/face-reader.js")
+
 block scripts
-      script(src="/socket.io/socket.io.js")
+      script(src="/javascripts/socket.io.js")
       script(src="/javascripts/processing.min.js")
+      script(src="/javascripts/jquery.min.js")
+      script(src="/javascripts/evodraw-canvas.js")
 
