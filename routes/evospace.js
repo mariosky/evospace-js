@@ -43,8 +43,6 @@ router.post('/:space/initialize/:size', function(req, res, next) {
 
     population.initialize( function(err, result)
     {
-        initializeDrawings(req.space,req.size);
-
 
         res.send( { 'result': result } );
     });
@@ -82,49 +80,15 @@ router.get('/:space/sample/:size', function(req, res, next) {
 
 
 router.post('/:space/sample/', function(req, res, next) {
+    console.log(JSON.stringify(req.body.sample));
+    console.log(JSON.stringify(req.space));
+    var population =  new evospace.Population(req.params.space);
 
-    var population =  new evospace.Population(req.space);
-
-    population.put_sample( req.sample);
+    population.put_sample( req.body.sample);
 
 });
 
 
-
-
-
-function initializeDrawings(space, size){
-    var population =  new evospace.Population(space);
-
-    var l_min = [10, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    var l_max = [150, 80, 1, 1, 1, 1, 4, 1, 1, 1, 3, 1, 1, 2, 3]
-
-
-    for (var i = 0; i<size; i++ ) {
-        var chromosome = [];
-        for (var j = 0; j < l_min.length; j++)
-            chromosome[j] = getRandomInt(l_min[j], l_max[j]);
-
-        var individual = {chromosome: req.body['chromosome[]']};
-
-
-        population.put_individual(individual, function(err, result)
-        {
-            console.log("inserted");
-
-        });
-
-
-    }
-
-
-}
-
-
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max+1 - min)) + min;
-}
 
 
 

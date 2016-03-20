@@ -15,12 +15,12 @@ $(document).ready(function () {
 
             //initialize
             var bound = false;
-            var chromosome = data.result.sample.sample[0].chromosome;
+            var chromosome = data.result.sample[0].chromosome;
 
             //pjs
 
             function getPJS() {
-                pjs = Processing.getInstanceById(element.id);
+                pjs = Processing.getInstanceById("lienzo");
                 if(pjs!=null) {
                     var chrome = pjs.getChromosome();
                     //alert(chrome)
