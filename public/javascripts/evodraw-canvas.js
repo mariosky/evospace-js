@@ -2,9 +2,6 @@
  * Created by mario on 3/18/16.
  */
 
-
-
-
 $(document).ready(function () {
 
     $.get('/evospace/pop/sample/1')
@@ -53,10 +50,10 @@ $(document).ready(function () {
 
 var get_another = function() {
 
+
+
     $.get('/evospace/pop/sample/1')
         .done(function (data) {
-
-
             $('#drawing_id').html( data.result.sample[0]);
 
             // alert("Data Loaded: " + JSON.stringify(data));
@@ -84,9 +81,6 @@ var get_another = function() {
 
             getPJS();
 
-
-
-
         });
 
 
@@ -94,6 +88,6 @@ var get_another = function() {
 
 };
 
-var interval = 1000 * 60 * 1; // where X is your every X minutes
+var interval = 1000 * 60 * minutes; // where X is your every X minutes
 
 setInterval(get_another, interval);

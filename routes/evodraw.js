@@ -8,9 +8,13 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-
+    console.log("[DEBUG][Cookies Request]%s", JSON.stringify(req.cookies));
     if (req.cookies.xbox != undefined) {
-        res.render('evodraw', {title: 'Express'});
+
+        var minutes = req.cookies.minutes || 1;
+        var size = req.cookies.size || 1080;
+
+        res.render('evodraw', {title: 'EvoDraw', xbox:req.cookies.xbox, minutes:minutes, size:size });
     }
     else{
         res.render('evodraw-config', {title: 'EvoDraw Config'});
@@ -20,7 +24,11 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     console.log("[DEBUG][Cookies Request]%s", JSON.stringify(req.body));
 
-    res.render('evodraw-config', {title: 'Saved'});
+    res.cookie('xbox' , req.body.xbox);
+    res.cookie('minutes' , req.body.minutes);
+    res.cookie('size' , req.body.size);
+
+    res.render('evodraw-config-saved', {title: 'Saved'});
 });
 
 

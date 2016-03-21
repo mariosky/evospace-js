@@ -11,9 +11,12 @@ html
 block content
    .container-full
       p#drawing_id Welcome to #{title}
+      p #{xbox} #{minutes} #{size}
       canvas#lienzo(data-processing-sources='/javascripts/drawings.pde')
 
 block scripts
+      script.
+          var minutes = #{minutes}
       script(src="/javascripts/processing.min.js")
       script(src="/javascripts/jquery.min.js")
       script(src="/javascripts/evodraw-canvas.js")
