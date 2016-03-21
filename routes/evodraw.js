@@ -8,8 +8,22 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-    res.render('evodraw', { title: 'Express' });
+
+    if (req.cookies.xbox != undefined) {
+        res.render('evodraw', {title: 'Express'});
+    }
+    else{
+        res.render('evodraw-config', {title: 'EvoDraw Config'});
+    }
 });
+
+router.post('/', function(req, res, next) {
+    console.log("[DEBUG][Cookies Request]%s", JSON.stringify(req.body));
+
+    res.render('evodraw-config', {title: 'Saved'});
+});
+
+
 
 router.get('/dashboard/', function(req, res, next) {
     res.render('evodraw-dashboard', { title: 'Express' });

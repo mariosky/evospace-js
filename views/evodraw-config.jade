@@ -1,0 +1,30 @@
+//Created by mariosky on 3/20/16.
+
+extends layout
+block content
+   .container
+      nav.navbar.navbar-default
+         .container-fluid
+            .navbar-header
+               a.navbar-brand EvoDraw Configuration
+      form(action="/evodraw" method="post")
+         .form-group
+            label(for='xbox') XBOX ID
+            input#xbox.form-control(type="text" name="xbox")
+            label(for='minutes') Minutes
+            select#minutes.form-control(name="minutes")
+               option 1
+               option 10
+               option 30
+               option 60
+               option 120
+            label(for='size') Size
+            select#size.form-control(name="size")
+               option 700
+               option 1200
+               option 1600
+               option 1900
+            button.btn.btn-default(type="submit") Submit
+
+block scripts
+   script(src="/javascripts/jquery.min.js")
