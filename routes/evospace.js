@@ -37,7 +37,7 @@ router.get('/:space/cardinality', function(req, res, next) {
 
 });
 
-router.post('/:space/initialize/:size', function(req, res, next) {
+router.post('/:space/initialize', function(req, res, next) {
 
     var population =  new evospace.Population(req.space);
 
@@ -85,6 +85,10 @@ router.post('/:space/sample/', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
 
     population.put_sample( req.body.sample);
+
+    res.send( { 'result': "async started" } );
+
+
 
 });
 

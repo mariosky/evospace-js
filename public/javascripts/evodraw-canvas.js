@@ -7,17 +7,18 @@ $(document).ready(function () {
     $.get('/evospace/pop/sample/1')
         .done(function (data) {
 
-            start_time = Date.now();
-            sample_id =
+            g_start_time = Date.now();
+            g_sample = data.result;
+            g_individual = JSON.parse(g_sample.sample[0]);
+
             $('#drawing_id').html( data.result.sample[0]);
 
             // alert("Data Loaded: " + JSON.stringify(data));
 
-            var individual = JSON.parse( data.result.sample[0]);
+
 
             //initialize
             var bound = false;
-            var chromosome = individual.chromosome;
 
             //pjs
 
@@ -27,7 +28,7 @@ $(document).ready(function () {
                     var chrome = pjs.getChromosome();
                     //alert(chrome)
                     chrome.length = 0;
-                    Array.prototype.push.apply(chrome, chromosome);
+                    Array.prototype.push.apply(chrome, g_individual.chromosome);
                     pjs.setup();//Se resetea el canvas
                     pjs.draw();
                     bound = true; }
@@ -54,18 +55,31 @@ var get_another = function() {
     //TODO
     //PUT SAMPLE BACK
 
+        var current_fitness = xbox_id.toString()+':'+Date.now();
+        g_individual.fitness[current_fitness] = g_start_time;
+        g_sample.sample = [g_individual];
 
+        $.post('/evospace/pop/sample',{sample:g_sample} )
+            .done(function(data){
+                console.log("PUT success");
+            });
+
+
+    // Async get another
     $.get('/evospace/pop/sample/1')
         .done(function (data) {
             $('#drawing_id').html( data.result.sample[0]);
 
-            // alert("Data Loaded: " + JSON.stringify(data));
+            g_start_time = Date.now();
+            g_sample = data.result;
+            g_individual = JSON.parse(g_sample.sample[0]);
 
-            var individual = JSON.parse( data.result.sample[0]);
+            $('#drawing_id').html( data.result.sample[0]);
+
 
             //initialize
             var bound = false;
-            var chromosome = individual.chromosome;
+
 
             //pjs
 
@@ -75,7 +89,7 @@ var get_another = function() {
                     var chrome = pjs.getChromosome();
                     //alert(chrome)
                     chrome.length = 0;
-                    Array.prototype.push.apply(chrome, chromosome);
+                    Array.prototype.push.apply(chrome, g_individual.chromosome);
                     pjs.setup();//Se resetea el canvas
                     pjs.draw();
                     bound = true; }

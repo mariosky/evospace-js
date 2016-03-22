@@ -7,10 +7,10 @@ $("#initialize").click(function () {
 
     //initialize
 
-    $.post('/evospace/pop/initialize/6')
+    $.post('/evospace/pop/initialize')
         .done(function (data) {
             console.log("initialized");
-            var sample =createPopultaion(50);
+            var sample =createPopultaion(5);
             console.log(JSON.stringify(sample));
 
             $.post('/evospace/pop/sample',{sample:sample})
