@@ -31,6 +31,11 @@ router.post('/', function(req, res, next) {
     res.render('evodraw-config-saved', {title: 'Saved'});
 });
 
+router.get('/config', function(req, res, next) {
+
+        res.render('evodraw-config', {title: 'EvoDraw Config'});
+});
+
 
 
 router.get('/dashboard/', function(req, res, next) {

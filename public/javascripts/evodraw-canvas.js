@@ -7,7 +7,8 @@ $(document).ready(function () {
     $.get('/evospace/pop/sample/1')
         .done(function (data) {
 
-
+            start_time = Date.now();
+            sample_id =
             $('#drawing_id').html( data.result.sample[0]);
 
             // alert("Data Loaded: " + JSON.stringify(data));
@@ -50,6 +51,8 @@ $(document).ready(function () {
 
 var get_another = function() {
 
+    //TODO
+    //PUT SAMPLE BACK
 
 
     $.get('/evospace/pop/sample/1')
