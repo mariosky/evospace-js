@@ -87,7 +87,7 @@ var get_another = function() {
                 pjs = Processing.getInstanceById("lienzo");
                 if(pjs!=null) {
                     var chrome = pjs.getChromosome();
-                    //alert(chrome)
+                    console.log(g_individual.chromosome);
                     chrome.length = 0;
                     Array.prototype.push.apply(chrome, g_individual.chromosome);
                     pjs.setup();//Se resetea el canvas
