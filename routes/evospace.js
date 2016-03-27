@@ -11,7 +11,7 @@ var router = express.Router();
 router.get('/:space/dashboard', function(req, res, next) {
 
 
-    res.render('evospace-dashboard', {title: req.space});
+    res.render('evospace-dashboard',  {title: req.params.space});
 
 });
 
@@ -36,7 +36,7 @@ router.get('/:space/all', function(req, res, next) {
 
 })
 
-router.get(':space/sample_queue', function(req, res, next) {
+router.get('/:space/sample_queue', function(req, res, next) {
     var population =  new evospace.Population(req.space);
     population.read_sample_queue( function(err, result)
     {

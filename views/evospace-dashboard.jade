@@ -10,9 +10,19 @@ block content
                a.navbar-brand EvoSpace Dashboard
       .row
         .col-sm-8
-           h2 {title}
-        .col-sm-3
+           .panel.panel-default
+              .panel-heading
+                 .panel-title Population
+              #population.panel-body
 
+
+        .col-sm-3
+           .panel.panel-default
+              .panel-heading
+                 .panel-title Sample Queue
+              #sample-queue.panel-body
+           button#respawn.btn.btn-default.btn-block(type="button") Respawn
 
 block scripts
    script(src="/javascripts/jquery.min.js")
+   script(src="/javascripts/evospace-dashboard.js")
