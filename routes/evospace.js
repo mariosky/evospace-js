@@ -25,6 +25,13 @@ router.get('/:space/dashboard', function(req, res, next) {
 
 });
 
+router.delete('/:space', function (req, res) {
+    var population =  new evospace.Population(req.params.space);
+    population.delete(function(err, result)
+    {
+        res.send(  result );
+    });
+});
 
 // Read All the population keys
 
