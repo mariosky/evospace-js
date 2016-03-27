@@ -8,18 +8,52 @@ var router = express.Router();
 
 /* GET home page. */
 
+router.get('/:space/dashboard', function(req, res, next) {
 
 
-router.get('/', function(req, res, next) {
+    res.render('evospace-dashboard', {title: req.space});
+
+});
+
+
+// Read All the population keys
+
+router.get('/:space', function(req, res, next) {
    var population =  new evospace.Population(req.space);
-    population.read_all( function(err, result)
+    population.read_pop_keys( function(err, result)
     {
         res.send( { 'population': result } );
     });
 
 });
 
+router.get('/:space/all', function(req, res, next) {
+    var population =  new evospace.Population(req.space);
+    population.read_all( function(err, result)
+    {
+        res.send( { 'population': result } );
+    });
 
+})
+
+router.get(':space/sample_queue', function(req, res, next) {
+    var population =  new evospace.Population(req.space);
+    population.read_sample_queue( function(err, result)
+    {
+        res.send( { 'result': result } );
+    });
+
+})
+
+
+
+router.post('/:space/respawn', function(req, res, next) {
+    var population =  new evospace.Population(req.space);
+    population.respawn(req.body.n ,function(err, result) {
+        res.send( { 'result': result } );
+    });
+
+});
 
 
 /* GET home page. */
@@ -32,7 +66,6 @@ router.get('/:space/cardinality', function(req, res, next) {
 
         res.send( { 'cardinality': result } );
     });
-
 });
 
 router.post('/:space/initialize', function(req, res, next) {
@@ -64,41 +97,32 @@ router.post('/:space/individual', function(req, res, next) {
 
 });
 
+
 router.get('/:space/sample/:size', function(req, res, next) {
 
     var population =  new evospace.Population(req.params.space);
-
     population.get_sample( req.params.size ,function(err, result)
     {
-
         res.send( { 'result': result } );
     });
-
 });
 
 
 router.post('/:space/sample/', function(req, res, next) {
-    console.log(JSON.stringify(req.body.sample));
-    console.log(JSON.stringify(req.space));
     var population =  new evospace.Population(req.params.space);
-
     population.put_sample( req.body.sample);
-
     res.send( { 'result': "async started" } );
 });
 
 
-router.post('/:space/sample/', function(req, res, next) {
-    console.log(JSON.stringify(req.body.sample));
-    console.log(JSON.stringify(req.space));
+router.get('/:space/sample/:size', function(req, res, next) {
+
     var population =  new evospace.Population(req.params.space);
-
-    population.put_sample( req.body.sample);
-
-    res.send( { 'result': "async started" } );
+    population.get_sample( req.params.size ,function(err, result)
+    {
+        res.send( { 'result': result } );
+    });
 });
-
-
 
 
 
