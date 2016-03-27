@@ -3,10 +3,20 @@
  */
 var express = require('express');
 var evospace = require('../lib/evospace');
-
+var evodraw = require('../lib/evodraw-evo');
 var router = express.Router();
 
 /* GET home page. */
+
+
+router.post('/:space/evolve', function(req, res, next) {
+
+    evodraw.evolve_Tournament(req.params.space,6,4,0.2 );
+    res.send( { 'result': "async started" } );
+
+
+});
+
 
 router.get('/:space/dashboard', function(req, res, next) {
 
