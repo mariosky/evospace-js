@@ -11,16 +11,14 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-
-    var population =  new evospace.Population(req.space);
-
-    population.card( function(err, result)
+   var population =  new evospace.Population(req.space);
+    population.read_all( function(err, result)
     {
-
-        res.send( { 'cardinality': result } );
+        res.send( { 'population': result } );
     });
 
 });
+
 
 
 
@@ -87,9 +85,17 @@ router.post('/:space/sample/', function(req, res, next) {
     population.put_sample( req.body.sample);
 
     res.send( { 'result': "async started" } );
+});
 
 
+router.post('/:space/sample/', function(req, res, next) {
+    console.log(JSON.stringify(req.body.sample));
+    console.log(JSON.stringify(req.space));
+    var population =  new evospace.Population(req.params.space);
 
+    population.put_sample( req.body.sample);
+
+    res.send( { 'result': "async started" } );
 });
 
 
