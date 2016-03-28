@@ -6,6 +6,11 @@ var express = require('express')
 var router = express.Router();
 
 
+router.get('/xbox/:xbox_id', function(req, res, next) {
+
+    res.render('face-reader', {xbox:req.params.xbox_id});
+});
+
 
 router.get('/', function(req, res, next) {
     console.log("[DEBUG][Cookies Request]%s", JSON.stringify(req.cookies));

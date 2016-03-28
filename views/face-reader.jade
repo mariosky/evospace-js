@@ -1,0 +1,33 @@
+extends layout
+block content
+  .container
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand FaceReader Dashboard
+    .row
+      .col-sm-8
+        .panel.panel-default
+          .panel-heading
+            .panel-title Last Readings
+          #events.panel-body
+        button#evolve.btn.btn-default.btn-block(type="button") Evolve
+    .row
+      .col-sm-12
+        .panel.panel-default
+          .panel-heading
+            .panel-title Faces
+          .panel-body
+            canvas#faces(width="1400" height="700")
+        button#evolve.btn.btn-default.btn-block(type="button") Evolve
+
+
+
+
+block scripts
+  script.
+    var xbox_id = #{xbox};
+  script(src="/javascripts/jquery.min.js")
+  script(src="/javascripts/socket.io.js")
+  script(src="/javascripts/face-reader.js")
+

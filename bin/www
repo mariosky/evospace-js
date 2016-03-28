@@ -94,45 +94,20 @@ function onListening() {
 
 
 io.sockets.on('connection', function (socket) {
-
   // send updates with online users
-  var i = setInterval(function() {
-
-
-    db.getLast(10,
-        function(err, data){
-
-         console.info("[DEBUG][getLast]",JSON.parse( data[0]) );
-
-
-        socket.emit('whoshere', data);
-
-        }
-
-    )
+  socket.on('get_xbox', function (data) {
+    var i = setInterval(function() {
+      db.getLast(data,10,
+          function(err, data){
+            socket.emit('event', data);
+          }
+      )
+    }, 3000);
 
 
 
-  }, 3000);
-
-
-  console.info("[DEBUG][io.sockets][connection]");
-
-
-  socket.on('iamhere', function (data) {
-    // This is sent by users when they connect, so we can map them to a user.
-    console.log("[DEBUG][io.sockets][iamhere] %s", data);
-/*
-    db.findUserById(data, function (err, user) {
-      console.log("[DEBUG][iamhere] %s -> {%j, %j}", data, err, user);
-      if (user !== null) {
-        connected_user = user;
-        usersonline[connected_user.id] = {
-          id: connected_user.id,
-          name: connected_user.username
-        };
-      }*/
-    });
 
   });
+
+});
 
