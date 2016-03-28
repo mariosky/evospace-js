@@ -6,20 +6,13 @@ block content
         .navbar-header
           a.navbar-brand FaceReader Dashboard
     .row
-      .col-sm-8
+      .col-sm-9
+        canvas#faces(width="1400" height="700")
+      .col-sm-3
         .panel.panel-default
           .panel-heading
             .panel-title Last Readings
           #events.panel-body
-        button#evolve.btn.btn-default.btn-block(type="button") Evolve
-    .row
-      .col-sm-12
-        .panel.panel-default
-          .panel-heading
-            .panel-title Faces
-          .panel-body
-            canvas#faces(width="1400" height="700")
-        button#evolve.btn.btn-default.btn-block(type="button") Evolve
 
 
 

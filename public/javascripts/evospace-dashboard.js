@@ -27,7 +27,7 @@ $.get('/evospace/pop')
     .done(function (data) {
         console.log(data);
 
-        $("#population").html(data.population.join(", ")) ;
+        $("#population").html(data.join(", ")) ;
 
     });
 
