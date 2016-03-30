@@ -19,11 +19,11 @@ router.post('/:space/evolve', function(req, res, next) {
 
 
 router.get('/:space/dashboard', function(req, res, next) {
-
-
     res.render('evospace-dashboard',  {title: req.params.space});
 
 });
+
+
 
 router.delete('/:space', function (req, res) {
     var population =  new evospace.Population(req.params.space);
@@ -33,7 +33,18 @@ router.delete('/:space', function (req, res) {
     });
 });
 
+router.get('/:space/individual/:key', function(req, res, next) {
+    var population =  new evospace.Population(req.params.space);
+    population.read(req.params.space+":individual:"+ req.params.key, function(err, result)
+    {
+        res.send( result  );
+    });
+
+});
+
+
 // Read All the population keys
+
 
 router.get('/:space', function(req, res, next) {
    var population =  new evospace.Population(req.params.space);

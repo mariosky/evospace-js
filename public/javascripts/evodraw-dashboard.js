@@ -38,12 +38,43 @@ $(document).ready(function () {
 
 });
 
+
+$('body').on('click', '.individual-id', function(){
+
+    var id = $(this).attr("id");
+
+
+
+    $.get('/evospace/'+id.replace(/:/g,"/"))
+        .done(function(data){
+            var ind = JSON.parse(data);
+            $('#modalContent').html(ind.id +"  ["+ind.chromosome.toString()+"]");
+
+            $('#modalInfo').modal();
+
+        });
+
+
+});
+
+
 var refresh_state = function(){
     $.get('/evospace/pop')
         .done(function (data) {
             console.log(data);
 
-            $("#population").html(data.join(", ")) ;
+            $("#population").empty();
+            for (var i = 0; i < data.length; i++) {
+                var individual = $('<a></a>').html(' individual:'+data[i].split(':')[2] );
+                individual.attr("id",data[i]);
+                individual.attr("role","button");
+                individual.addClass("individual-id");
+                console.log(individual);
+
+                $("#population").append(individual);
+            }
+            //$("#population").html(data.join(", ")) ;
+
 
         });
 

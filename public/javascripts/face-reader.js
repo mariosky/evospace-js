@@ -19,9 +19,9 @@ socket.on('event', function (data) {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
 
-    for (var i = 0, len = data.length; i < len; i++) {
-        var individual = JSON.parse(data);
-        var date = new Date(object.date_time*1000);
+    for (var i = 0; i < data.length; i++) {
+        var individual = JSON.parse(data[i]);
+        var date = new Date(individual.date_time*1000);
         var display_time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
         var row = $('<tr></tr>').html(makeEventRow(individual,display_time) );
         $("#events").append(row);
@@ -62,3 +62,4 @@ var drawRectangle = function (face, context) {
 
     console.log("draw");
 }
+

@@ -15,7 +15,7 @@ block content
                   .panel-title Population
                #population.panel-body
             button#evolve.btn.btn-default.btn-block(type="button") Evolve
-            button#initialize.btn.btn-danger.btn-block(type="button") Inicializar Población
+            button#initialize.btn.btn-danger.btn-block(type="button") Re-start Population
 
          .col-sm-3
             .panel.panel-default
@@ -23,7 +23,19 @@ block content
                   .panel-title Sample Queue
                #sample-queue.panel-body
             button#respawn.btn.btn-default.btn-block(type="button") Respawn
+   .modal.fade#modalInfo(tabindex="-1" role="dialog" aria-labelledby="Individual Info")
+      .modal-dialog
+         .modal-content
+            .modal-header
+               h4.modal-title Details
+            #modalContent.modal-body
+            .modal-footer
+               button(type="button" class="btn btn-default" data-dismiss="modal") Close
+
+
+
    script(src="/javascripts/jquery.min.js")
+   script(src="/javascripts/modal.js")
    script(src="/javascripts/evodraw-dashboard.js")
 
 
