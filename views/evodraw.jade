@@ -10,8 +10,7 @@ html
         link(rel='stylesheet', href='/stylesheets/evodraw.css')
 block content
    .container-full
-      p#drawing_id Welcome to #{title}
-      p #{xbox} #{minutes} #{size}
+      p#drawing_id
       canvas#lienzo(data-processing-sources='/javascripts/drawings.pde')
 
 block scripts

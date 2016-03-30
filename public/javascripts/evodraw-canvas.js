@@ -11,7 +11,7 @@ $(document).ready(function () {
             g_sample = data.result;
             g_individual = JSON.parse(g_sample.sample[0]);
 
-            $('#drawing_id').html( data.result.sample[0]);
+            $('#drawing_id').html( g_individual.id);
 
             // alert("Data Loaded: " + JSON.stringify(data));
 
@@ -68,13 +68,13 @@ var get_another = function() {
     // Async get another
     $.get('/evospace/pop/sample/1')
         .done(function (data) {
-            $('#drawing_id').html( data.result.sample[0]);
+
 
             g_start_time = Date.now();
             g_sample = data.result;
             g_individual = JSON.parse(g_sample.sample[0]);
 
-            $('#drawing_id').html( data.result.sample[0]);
+            $('#drawing_id').html( g_individual.id );
 
 
             //initialize

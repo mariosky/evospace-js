@@ -644,7 +644,7 @@ float[] chromosome = {34, 59, 0, 1, 0, 0, 3, 0, 0, 1, 1, 0, 0, 2, 3};
 float[] getChromosome() { return chromosome; }
 
 // Cambiar el tamaño de la pantalla del individuo
-float[] screenSize = {1350,800};
+float[] screenSize = {1650,900};
 float[] getSize() { return screenSize; }
 
 

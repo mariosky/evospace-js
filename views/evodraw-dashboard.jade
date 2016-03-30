@@ -7,19 +7,28 @@ block content
       nav.navbar.navbar-default
          .container-fluid
             .navbar-header
-               a.navbar-brand EvoDraw
+               a.navbar-brand EvoDraw Dashboard
+      .row
+         .col-sm-8
+            .panel.panel-default
+               .panel-heading
+                  .panel-title Population
+               #population.panel-body
+            button#evolve.btn.btn-default.btn-block(type="button") Evolve
+            button#initialize.btn.btn-danger.btn-block(type="button") Inicializar Población
 
-      p Welcome to #{title}
-      p
-         button#initialize.btn.btn-danger(type="button") Inicializar Población
-         button.btn.btn-default(type="button") Respawn
+         .col-sm-3
+            .panel.panel-default
+               .panel-heading
+                  .panel-title Sample Queue
+               #sample-queue.panel-body
+            button#respawn.btn.btn-default.btn-block(type="button") Respawn
+   script(src="/javascripts/jquery.min.js")
+   script(src="/javascripts/evodraw-dashboard.js")
 
-      block scripts
-         script(src="/socket.io/socket.io.js")
-         script(src="/javascripts/jquery.min.js")
-         script(src="/javascripts/evodraw-config.js")
 
-block scripts
-   script(src="/javascripts/socket.io.js")
+
+
+
 
 
