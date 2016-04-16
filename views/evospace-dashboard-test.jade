@@ -1,0 +1,31 @@
+//Created by mariosky on 3/16/16.
+
+extends layout
+block content
+   .container
+      nav.navbar.navbar-default
+         .container-fluid
+            .navbar-header
+               a.navbar-brand EvoSpace Test Dashboard
+      .row
+        .col-sm-8
+           .panel.panel-default
+              .panel-heading
+                 .panel-title Populations Names
+              .panel-body
+                 #namePopulations
+
+        .col-sm-3
+           .panel.panel-default
+              .panel-heading
+                 .panel-title Create New Population
+              .panel-body
+                 form.form-control-static(action="/evospaceTest/addPopulation", method="post")
+                    input.input-group(type="text" name="name", placeholder="Name")
+                    input.input-group(type="text" name="numberInd", placeholder="No. Individuals")
+                    button.btn.btn-default.btn-block(type="submit") Create
+
+
+block scripts
+   script(src="/javascripts/jquery.min.js")
+   script(src="/javascripts/evospace-dashboard-test.js")
