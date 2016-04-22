@@ -16,9 +16,15 @@ $.get('/evospaceTest/namePopulations')
 
             data.forEach( function(key){
                 var name = key.split("_");
-                //$("#namePopulations").append(name[0]+"</br>");
+
                 $("#namePopulations").append("<a href='../evospace/" + name[0] + "'>" + name[0]+"</a>  -  ");
-                $("#namePopulations").append("<a href='../evospaceTest/" + key + "' data-method='delete' onclick='return deletePop()'> Delete </a></br>");
+                $("#namePopulations").append("<a id='" + name[0] + "' namePop='" + name[0] + "' onclick='deletePop(this.id);'> Delete</a>");
+                $("#namePopulations").append(
+                    "<form method='POST' action='../evospaceTest/' enctype='application/x-www-form-urlencoded' id='formDelete"+ name[0] +"' name='formDelete"+ name[0] +"'>" +
+                    "<input type='hidden' name='_method' value='DELETE'>" +
+                    "<input type='hidden' name='namePopulation' value='" + name[0] +"'>" +
+                    "</form>"
+                );
             });
 
         });
@@ -26,8 +32,13 @@ $.get('/evospaceTest/namePopulations')
     });
 }
 
-function deletePop() {
-    return confirm('are you sure?');
+function deletePop(key)
+{
+    var res = confirm('Are you sure?');
+    if(res == true)
+    {
+        document.getElementById('formDelete'+key).submit();
+    }
 }
 
 
