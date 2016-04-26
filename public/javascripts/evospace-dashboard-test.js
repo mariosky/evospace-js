@@ -17,7 +17,7 @@ $.get('/evospaceTest/namePopulations')
             data.forEach( function(key){
                 var name = key.split("_");
 
-                $("#namePopulations").append("<a href='../evospace/" + name[0] + "'>" + name[0]+"</a>  -  ");
+                $("#namePopulations").append("<a href='../evospaceTest/" + name[0] + "/dashboard'>" + name[0]+"</a>  -  ");
                 $("#namePopulations").append("<a id='" + name[0] + "' namePop='" + name[0] + "' onclick='deletePop(this.id);'> Delete</a>");
                 $("#namePopulations").append(
                     "<form method='POST' action='../evospaceTest/' enctype='application/x-www-form-urlencoded' id='formDelete"+ name[0] +"' name='formDelete"+ name[0] +"'>" +
