@@ -1,0 +1,41 @@
+//Created by mariosky on 3/16/16.
+
+extends layout
+block content
+   .container
+      nav.navbar.navbar-default
+         .container-fluid
+            .navbar-header
+               a.navbar-brand EvoSpace #{namePop} Dashboard
+      .row
+        .col-sm-8
+           .panel.panel-default
+              .panel-heading
+                 .panel-title Population
+              #population.panel-body
+           //button#evolve.btn.btn-default.btn-block(type="button") Evolve
+
+         .col-sm-3
+            .panel.panel-default
+               .panel-heading
+                  .panel-title Create New Population
+               .panel-body
+                  form.form-control-static(action="/evospaceTest/#{namePop}/dashboard", method="post")
+                     input.input-group(type="text" name="sizeSample", placeholder="Size of Sample")
+                     br
+                     button.btn.btn-default.btn-block(type="submit") Create
+                     br
+
+      .row
+        .col-sm-3
+           .panel.panel-default
+              .panel-heading
+                 .panel-title Sample Queue
+              #sample-queue.panel-body
+           button#respawn.btn.btn-default.btn-block(type="button") Respawn
+
+block scripts
+   script(src="/javascripts/jquery.min.js")
+   script.
+      var namePopulation = !{JSON.stringify(namePop)}
+   script(src="/javascripts/evospace-population-dashboard.js").
