@@ -6,19 +6,22 @@ block content
       nav.navbar.navbar-default
          .container-fluid
             .navbar-header
-               a.navbar-brand EvoSpace #{namePop} Dashboard
+               a.navbar-brand EvoSpace #{namePop} Dashboard #{sizePop} #{noSamples}
+
+      - if ((sizePop != 0) || (noSamples > 0) ) {
+
       .row
-        .col-sm-8
-           .panel.panel-default
-              .panel-heading
-                 .panel-title Population
-              #population.panel-body
-           //button#evolve.btn.btn-default.btn-block(type="button") Evolve
+         .col-sm-8
+            .panel.panel-default
+               .panel-heading
+                  .panel-title Population
+               #population.panel-body
+            //button#evolve.btn.btn-default.btn-block(type="button") Evolve
 
          .col-sm-3
             .panel.panel-default
                .panel-heading
-                  .panel-title Create New Population
+                  .panel-title Get Sample
                .panel-body
                   form.form-control-static(action="/evospaceTest/#{namePop}/dashboard", method="post")
                      input.input-group(type="text" name="sizeSample", placeholder="Size of Sample")
@@ -27,12 +30,30 @@ block content
                      br
 
       .row
-        .col-sm-3
-           .panel.panel-default
-              .panel-heading
-                 .panel-title Sample Queue
-              #sample-queue.panel-body
-           button#respawn.btn.btn-default.btn-block(type="button") Respawn
+         .col-sm-3
+            .panel.panel-default
+               .panel-heading
+                  .panel-title Sample Queue
+               #sample-queue.panel-body
+            button#respawn.btn.btn-default.btn-block(type="button") Respawn
+      - }
+      - else {
+
+      .row
+         .col-sm-8
+            .panel.panel-default
+               .panel-heading
+                  .panel-title Initialize
+               .panel-body
+                  form.form-control-static(action="/evospaceTest/#{namePop}/initialize", method="post")
+                     input.input-group(type="text" name="noIndividuals", placeholder="Number of Individuals")
+                     br
+                     button.btn.btn-default.btn-block(type="submit") Create
+                     br
+                  p.
+                     This is an example
+
+      -}
 
 block scripts
    script(src="/javascripts/jquery.min.js")
