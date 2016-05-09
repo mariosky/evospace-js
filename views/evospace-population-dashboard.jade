@@ -6,7 +6,12 @@ block content
       nav.navbar.navbar-default
          .container-fluid
             .navbar-header
-               a.navbar-brand EvoSpace #{namePop} Dashboard #{sizePop} #{noSamples}
+               a.navbar-brand EvoSpace #{namePop} Dashboard
+               //a.navbar-brand EvoSpace #{namePop} Dashboard #{sizePop} #{noSamples}
+            .collapse.navbar-collapse
+               ul.nav.navbar-nav.navbar-right
+                  li
+                     a(href="../../evospaceTest") Home
 
       - if ((sizePop != 0) || (noSamples > 0) ) {
 
@@ -24,7 +29,7 @@ block content
                   .panel-title Get Sample
                .panel-body
                   form.form-control-static(action="/evospaceTest/#{namePop}/dashboard", method="post")
-                     input.input-group(type="text" name="sizeSample", placeholder="Size of Sample")
+                     input.input-group.btn-block(type="text" name="sizeSample", placeholder="Size of Sample")
                      br
                      button.btn.btn-default.btn-block(type="submit") Create
                      br
@@ -40,13 +45,13 @@ block content
       - else {
 
       .row
-         .col-sm-8
+         .col-sm-3
             .panel.panel-default
                .panel-heading
                   .panel-title Initialize
                .panel-body
                   form.form-control-static(action="/evospaceTest/#{namePop}/initialize", method="post")
-                     input.input-group(type="text" name="noIndividuals", placeholder="Number of Individuals")
+                     input.input-group.btn-block(type="text" name="noIndividuals", placeholder="Number of Individuals")
                      br
                      button.btn.btn-default.btn-block(type="submit") Create
                      br
