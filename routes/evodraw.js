@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     console.log("[DEBUG][Cookies Request]%s", JSON.stringify(req.body));
 
-    res.cookie('xbox' , req.body.xbox);
+    res.cookie('xbox' , req.body.xbox.toString());
     res.cookie('minutes' , req.body.minutes);
     res.cookie('size' , req.body.size);
 
@@ -45,6 +45,10 @@ router.get('/config', function(req, res, next) {
 
 router.get('/dashboard/', function(req, res, next) {
     res.render('evodraw-dashboard', { title: 'Express' });
+});
+
+router.get('/dashboard/evolve', function(req, res, next) {
+    res.render('evodraw-dashboard-evolve', { title: 'Express' });
 });
 
 

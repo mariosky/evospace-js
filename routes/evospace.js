@@ -11,7 +11,7 @@ var router = express.Router();
 
 router.post('/:space/evolve', function(req, res, next) {
 
-    evodraw.evolve_Tournament(req.params.space,6,4,0.2 );
+    evodraw.evolve_Tournament(req.params.space,6,2,0.2 );
     res.send( { 'result': "async started" } );
 
 

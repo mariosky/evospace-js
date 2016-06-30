@@ -14,6 +14,7 @@ $(document).ready(function () {
     $("#evolve").click(function () {
         $.post('/evospace/pop/evolve/')
             .done(function (data) {
+                console.log("Evolution");
                 console.log(data);
 
             });
@@ -41,6 +42,5 @@ $.get('/evospace/pop/sample_queue')
 }
 
 
-var interval = 2000; // where X is your every X minutes
-
+var interval = 2000;
 setInterval(refresh_state, interval);

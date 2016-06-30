@@ -16,7 +16,7 @@ block content
 block scripts
       script.
           var minutes = #{minutes};
-          var xbox_id = #{xbox};
+          var xbox_id = '#{xbox}';
       script(src="/javascripts/processing.min.js")
       script(src="/javascripts/jquery.min.js")
       script(src="/javascripts/evodraw-canvas.js")
