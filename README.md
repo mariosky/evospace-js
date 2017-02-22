@@ -19,7 +19,7 @@ This version is implemented in nodejs using redis as the backend.
 **REST API**
 ----
 
-**Read All the population keys**
+*Read All the population keys*
 ----
 Returns all the keys available in the population.
 
