@@ -44,8 +44,6 @@ router.get('/:space/individual/:key', function(req, res, next) {
 
 
 // Read All the population keys
-
-
 router.get('/:space', function(req, res, next) {
    var population =  new evospace.Population(req.params.space);
     population.read_pop_keys( function(err, result)
