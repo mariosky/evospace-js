@@ -1,4 +1,4 @@
-**evospace-js**
+#evospace-js
 ----
 
 EvoSpace is a population store for the development of evolutionary algorithms (EA) 
@@ -16,10 +16,10 @@ since it is robust to lost connections with remote clients.
 This version is implemented in nodejs using redis as the backend.
 
 
-**REST API**
+#REST API
 ----
 
-*Read All the population keys*
+## Read All the population keys
 ----
 Returns all the keys available in the population.
 
