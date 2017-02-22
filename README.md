@@ -62,3 +62,28 @@ Returns an individual in [space] with key = [key].
     **Content:** `{"id":"pop:individual:2","fitness":{"1:1486488890712":"1486488875914","1:1486489025693":"1486489010700","1:1486489535683":"1486489520673","1:1486489595692":"1486489580663"},"chromosome":["128","78","0","0","1","0","2","0","1","0","0","0","1","2","1"]}`
 
 
+## Post an individual
+Creates and adds an Individual to [space].
+
+* **URL**
+   `/[space]/individual`
+* **Method:**
+
+  `POST`
+
+* **Data Params**
+   **Required:**
+   `chromosome=[]`
+    A list representation of the individual.
+   **Optional:**
+   A list of key, value pairs.
+   `fitness=[]`
+   `timestamp=[]`
+
+
+* **Success Response:**
+  * **Code:** 200 <br />
+    **Content:** `{"result":""}`
+
+* **Sample Call:**
+

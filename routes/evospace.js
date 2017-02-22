@@ -33,6 +33,8 @@ router.delete('/:space', function (req, res) {
     });
 });
 
+
+//Read an individual
 router.get('/:space/individual/:key', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.read(req.params.space+":individual:"+ req.params.key, function(err, result)
