@@ -67,18 +67,24 @@ Creates and adds an Individual to [space].
 
 * **URL**
    `/[space]/individual`
+
 * **Method:**
 
   `POST`
 
 * **Data Params**
+
    **Required:**
+
    `chromosome=[]`
+
     A list representation of the individual.
+
    **Optional:**
+
    A list of key, value pairs.
-   `fitness=[]`
-   `timestamp=[]`
+
+   `fitness=[]` , `timestamp=[]`
 
 
 * **Success Response:**
