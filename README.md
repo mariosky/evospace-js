@@ -1,7 +1,6 @@
 #evospace-js
-----
 
-EvoSpace is a population store for the development of evolutionary algorithms (EA) 
+EvoSpace is a population store for the development of evolutionary algorithms (EA)
 and other population-based searches.  Is intended to run using an asynchronous
 distributed architecture.  EvoSpace is designed to be versatile, since the population is
 decoupled from any particular evolutionary (or, for that matter, metaheuristic) algorithm.
@@ -17,10 +16,8 @@ This version is implemented in nodejs using redis as the backend.
 
 
 #REST API
-----
 
 ## Read All the population keys
-----
 Returns all the keys available in the population.
 
 * **URL**
