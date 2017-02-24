@@ -13,18 +13,25 @@ router.post('/:space/evolve', function(req, res, next) {
 
     evodraw.evolve_Tournament(req.params.space,6,2,0.2 );
     res.send( { 'result': "async started" } );
-
-
 });
+
+router.post('/:space/initialize', function(req, res, next) {
+
+    var population =  new evospace.Population(req.params.space);
+    population.initialize( function(err, result)
+    {
+        res.send( { 'result': result } );
+    });
+});
+
 
 
 router.get('/:space/dashboard', function(req, res, next) {
     res.render('evospace-dashboard',  {title: req.params.space});
-
 });
 
 
-
+// Delete space
 router.delete('/:space', function (req, res) {
     var population =  new evospace.Population(req.params.space);
     population.delete(function(err, result)
@@ -34,14 +41,13 @@ router.delete('/:space', function (req, res) {
 });
 
 
-//Read an individual
+//Read an individual by key
 router.get('/:space/individual/:key', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.read(req.params.space+":individual:"+ req.params.key, function(err, result)
     {
         res.send( result  );
     });
-
 });
 
 
@@ -52,62 +58,59 @@ router.get('/:space', function(req, res, next) {
     {
         res.send( result  );
     });
-
 });
 
+
+// Read those individuals with a score between [:start] and [:finish].
 router.get('/:space/zrange/:start/:finish', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.read_zrange(req.params.start,req.params.finish, function(err, result)
     {
         res.send(  result );
     });
-
 });
 
+// Read those individuals with a score between [:start] and [:finish] in reversed order.
 router.get('/:space/zrevrange/:start/:finish', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.read_zrevrange(req.params.start,req.params.finish, function(err, result)
     {
         res.send( result  );
     });
-
 });
 
-
+// Read all individuals.
 router.get('/:space/all', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.read_all( function(err, result)
     {
         res.send( { 'population': result } );
     });
-
 })
 
+
+// Read the sample queue.
 router.get('/:space/sample_queue', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.read_sample_queue( function(err, result)
     {
         res.send( { 'result': result } );
     });
-
 })
 
 
-
+// Respawn n samples from the sample queue .
 router.post('/:space/respawn', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.respawn(req.body.n ,function(err, result) {
         res.send( { 'result': result } );
     });
-
 });
 
 
-/* GET home page. */
+// Read the number of individuals in the population [space]
 router.get('/:space/cardinality', function(req, res, next) {
-
     var population =  new evospace.Population(req.params.space);
-
     population.card( function(err, result)
     {
 
@@ -115,38 +118,19 @@ router.get('/:space/cardinality', function(req, res, next) {
     });
 });
 
-router.post('/:space/initialize', function(req, res, next) {
-
-    var population =  new evospace.Population(req.params.space);
-
-    population.initialize( function(err, result)
-    {
-
-        res.send( { 'result': result } );
-    });
-
-});
-
+// Add an individual to [space]
 router.post('/:space/individual', function(req, res, next) {
-
     var population =  new evospace.Population(req.params.space);
-
     console.log(req.body['chromosome[]']);
-
     var individual = {chromosome: req.body['chromosome[]']};
-
-
     population.put_individual(individual, function(err, result)
     {
-
         res.send( { 'result': result } );
     });
-
 });
 
-
+// Take a sample of size [size] from the [space]
 router.get('/:space/sample/:size', function(req, res, next) {
-
     var population =  new evospace.Population(req.params.space);
     population.get_sample( req.params.size ,function(err, result)
     {
@@ -154,23 +138,12 @@ router.get('/:space/sample/:size', function(req, res, next) {
     });
 });
 
-
+// Put back a sample to a [space]
 router.post('/:space/sample/', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.put_sample( req.body.sample);
     res.send( { 'result': "async started" } );
 });
-
-
-router.get('/:space/sample/:size', function(req, res, next) {
-
-    var population =  new evospace.Population(req.params.space);
-    population.get_sample( req.params.size ,function(err, result)
-    {
-        res.send( { 'result': result } );
-    });
-});
-
 
 
 

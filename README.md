@@ -76,15 +76,16 @@ Creates and adds an Individual to [space].
 
    **Required:**
 
-   `chromosome=[]`
-
-    A list representation of the individual.
+   `chromosome=[]`: A list representation of the individual.
 
    **Optional:**
 
-   A list of key, value pairs.
+   A list of key-value pairs:
+    `score`: An optional score, if it is supplied then the individual is also added
+     to an ordered set.
+    `fitness=[]` ,
+    `timestamp=[]`
 
-   `fitness=[]` , `timestamp=[]`
 
 
 * **Success Response:**
