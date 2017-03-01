@@ -45,12 +45,50 @@ url = 'http://127.0.0.1:3000/evospace/test_pop/zrange/1/1'
 r = requests.get(url)
 print "\n\n\nscore between 10 and 12", r.text
 
-#Read those individuals with a score between [:start] and [:finish].
+#Read the top N individuals
 url = 'http://127.0.0.1:3000/evospace/test_pop/top/2'
 r = requests.get(url)
 print "\n\n\ntopn", r.text
 
+#GET sample of N individuals
+url = 'http://127.0.0.1:3000/evospace/pop/sample/3'
+r = requests.get(url)
+print "\n\n\nsample", r.text
+sample = r.json()
+print 'sample result', sample['result']
+print 'as JSON', json.dumps(sample['result'])
+
+#GET sample of N individuals
+url = 'http://127.0.0.1:3000/evospace/pop/sample/3'
+r = requests.get(url)
+print "\n\n\nsample", r.text
+sample = r.json()
+print 'sample result', sample['result']
+print 'as JSON', json.dumps(sample['result'])
+
+
+
+#POST sample 
+ind ={'sample':sample['result']['sample'], 'sample_id':sample['result']['sample_id']}  
+print "sample:",ind,json.dumps(ind)
+url = 'http://127.0.0.1:3000/evospace/test_pop/sample'
+r = requests.post(url, json=ind)
+print 'POST sample', r.text
+
+#Read the number of individuals in the population [space]
+url = 'http://127.0.0.1:3000/evospace/test_pop/cardinality'
+r = requests.get(url)
+print "cardinality", r.text
+
+#Respawn 1 sample
+url = 'http://127.0.0.1:3000/evospace/test_pop/respawn'
+data ={'n':1}  
+r = requests.post(url,data)
+print "respawn", r.text
+
+
 r.connection.close()
+
 
 
 

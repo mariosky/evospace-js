@@ -6,8 +6,6 @@ var evospace = require('../lib/evospace');
 var evodraw = require('../lib/evodraw-evo');
 var router = express.Router();
 
-
-
 // Application dependent
 router.post('/:space/evolve', function(req, res, next) {
 
@@ -19,8 +17,6 @@ router.post('/:space/evolve', function(req, res, next) {
 router.get('/:space/dashboard', function(req, res, next) {
     res.render('evospace-dashboard',  {title: req.params.space});
 });
-
-
 
 router.post('/:space/initialize', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
@@ -87,7 +83,7 @@ router.get('/:space/zrevrange/:start/:finish', function(req, res, next) {
     });
 });
 
-// Read those individuals with a score between [:start] and [:finish] in reversed order.
+//Read the top N individuals
 router.get('/:space/top/:n', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.read_topn(req.params.n,function(err, result)
@@ -95,9 +91,6 @@ router.get('/:space/top/:n', function(req, res, next) {
         res.send( result  );
     });
 });
-
-
-
 
 // Read the sample queue.
 router.get('/:space/sample_queue', function(req, res, next) {
@@ -108,7 +101,6 @@ router.get('/:space/sample_queue', function(req, res, next) {
     });
 })
 
-
 // Respawn n samples from the sample queue .
 router.post('/:space/respawn', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
@@ -117,13 +109,11 @@ router.post('/:space/respawn', function(req, res, next) {
     });
 });
 
-
 // Read the number of individuals in the population [space]
 router.get('/:space/cardinality', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.card( function(err, result)
     {
-
         res.send( { 'cardinality': result } );
     });
 });
@@ -131,15 +121,12 @@ router.get('/:space/cardinality', function(req, res, next) {
 // Add an individual to [space]
 router.post('/:space/individual', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
-    console.log(req.body);
     var individual = req.body;
     population.put_individual(individual, function(err, result)
     {
         res.send( { 'result': result, 'error':err } );
     });
 });
-
-
 
 
 
@@ -153,12 +140,11 @@ router.get('/:space/sample/:size', function(req, res, next) {
 });
 
 // Put back a sample to a [space]
-router.post('/:space/sample/', function(req, res, next) {
+router.post('/:space/sample', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
-    population.put_sample( req.body.sample);
+    console.log("[DEBUG][post_sample body] %s", JSON.stringify(req.body));
+    population.put_sample( req.body);
     res.send( { 'result': "async started" } );
 });
-
-
 
 module.exports = router;
