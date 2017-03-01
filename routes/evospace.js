@@ -88,7 +88,7 @@ router.get('/:space/top/:n', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     population.read_topn(req.params.n,function(err, result)
     {
-        res.send( result  );
+        res.send(  result  );
     });
 });
 
@@ -139,12 +139,22 @@ router.get('/:space/sample/:size', function(req, res, next) {
     });
 });
 
-// Put back a sample to a [space]
+// Insert sample to a [space]
 router.post('/:space/sample', function(req, res, next) {
+    var population =  new evospace.Population(req.params.space);
+    console.log("[DEBUG][post_sample body] %s", JSON.stringify(req.body));
+    population.add_sample(req.body);
+    res.send( { 'result': "async started" } );
+});
+
+// Put back a sample to a [space]
+router.put('/:space/sample', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
     console.log("[DEBUG][post_sample body] %s", JSON.stringify(req.body));
     population.put_sample( req.body);
     res.send( { 'result': "async started" } );
 });
+
+
 
 module.exports = router;
