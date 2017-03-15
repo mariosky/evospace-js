@@ -142,7 +142,7 @@ router.get('/:space/sample/:size', function(req, res, next) {
 // Insert sample to a [space]
 router.post('/:space/sample', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
-    console.log("[DEBUG][post_sample body] %s", JSON.stringify(req.body));
+    //console.log("[DEBUG][post_sample body] %s", JSON.stringify(req.body));
     population.add_sample(req.body);
     res.send( { 'result': "async started" } );
 });
@@ -150,7 +150,7 @@ router.post('/:space/sample', function(req, res, next) {
 // Put back a sample to a [space]
 router.put('/:space/sample', function(req, res, next) {
     var population =  new evospace.Population(req.params.space);
-    console.log("[DEBUG][post_sample body] %s", JSON.stringify(req.body));
+    //console.log("[DEBUG][post_sample body] %s", JSON.stringify(req.body));
     population.put_sample( req.body);
     res.send( { 'result': "async started" } );
 });
